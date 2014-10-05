@@ -11,24 +11,24 @@ var ReactStyle  = require('react-style');
 
 var NewsService = require('../Services/NewsService');
 
-var Breadcrumb      = require('./Breadcrumb');
 var NewsArticle     = require('./NewsArticle');
 var NewsListItem    = require('./NewsListItem');
 
+var Views = {
+  HOME:    0,
+  CONTENT: 1
+}
 
 var NewsList = React.createClass({
 
   getInitialState() {
     return {
-      home:             true,
+      view:             Views.HOME,
+      selectedIndex:    -1,
       isLoading:        true,
       newsItems:        [],
-      selectedItem:     -1,
       showBottomShadow: false,
-      showTopShadow:    false,
-      path: [
-        'Latest news articles'
-      ]
+      showTopShadow:    false
     };
   },
 
@@ -57,9 +57,14 @@ var NewsList = React.createClass({
       backgroundColor: 'white',
       position:        'absolute',
       top:             '40px',
-      transition:      'transform .3s ease-in',
       width:           '300px',
       zIndex:          2
+    }),
+
+    transitionPanelStyle: ReactStyle({
+      position:        'relative',
+      transition:      'transform .3s ease-in',
+      width:           '600px'
     }),
 
     listToTheLeftStyle: ReactStyle({
@@ -81,6 +86,14 @@ var NewsList = React.createClass({
       textAlign:  'center',
       top:        '50%',
       width:      '100%'
+    }),
+
+    titleStyle: ReactStyle({
+      display:    'inline-block',
+      fontSize:   '20px',
+      margin:     0,
+      padding:    '10px',
+      width:      '280px'
     })
 
   },
@@ -114,35 +127,33 @@ var NewsList = React.createClass({
     }
 
     return <div styles={styles.containerStyle}>
-      <Breadcrumb path={state.path} home={state.home} onBackButtonClick={this.onBackButtonClick} />
-
-      <NewsArticle article={state.newsItems[state.selectedItem]} />
-
-      <div styles={[styles.listContainerStyle,
-                    !state.home && styles.listToTheLeftStyle,
-                    state.showTopShadow && styles.listTopShadowStyle]}>
-        <div styles={[state.showBottomShadow && styles.listBottomShadowStyle]}>
-          <ul ref="newsList"
-              styles={styles.listStyle}
-              onClick={this.onNewsItemClick}
-              onScroll={throttle(this.onScroll, 200)}>
-            {state.isLoading ?
-              <div styles={styles.loadingIndicatorStyle}>
-                Loading...
-              </div>
-              :
-              state.error ?
+      <div styles={[styles.transitionPanelStyle, !!state.view && styles.listToTheLeftStyle]}>
+        <h2 styles={styles.titleStyle}>Latest news articles</h2>
+        <div styles={[styles.listContainerStyle,
+                      state.showTopShadow && styles.listTopShadowStyle]}>
+          <div styles={[state.showBottomShadow && styles.listBottomShadowStyle]}>
+            <ul ref="newsList"
+                styles={styles.listStyle}
+                onClick={this.onNewsItemClick}
+                onScroll={throttle(this.onScroll, 200)}>
+              {state.isLoading ?
                 <div styles={styles.loadingIndicatorStyle}>
-                  Something went wrong: {state.error}
+                  Loading...
                 </div>
                 :
-                newsItems
-              }
+                state.error ?
+                  <div styles={styles.loadingIndicatorStyle}>
+                    Something went wrong: {state.error}
+                  </div>
+                  :
+                  newsItems
+                }
 
-          </ul>
+            </ul>
+          </div>
         </div>
+        <NewsArticle onBackButtonClick={this.onBackButtonClick} article={state.newsItems[state.selectedIndex]} />
       </div>
-
     </div>;
   },
 
@@ -153,19 +164,11 @@ var NewsList = React.createClass({
       return;
     }
 
-    var state = this.state;
-    this.setState({
-      home: false,
-      path: [
-        'Latest news articles',
-        state.newsItems[position].title
-      ],
-      selectedItem: position
-    });
+    this.setState({selectedIndex:position, view: Views.CONTENT});
   },
 
   onBackButtonClick() {
-    this.setState({home: true});
+    this.setState({view: Views.HOME});
   },
 
   onScroll() {
