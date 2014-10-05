@@ -1,0 +1,6 @@
+{
+  "browser": true,
+  "esnext": true,
+  "maxlen": 80,
+  "node": true
+}
