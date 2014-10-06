@@ -4,7 +4,10 @@ html, body {
          font-family: Helvetica Neue, Helvetica, Arial;
               margin: 0;
              padding: 0;
-         user-select: none;
+         -webkit-user-select: none;
+            -moz-user-select: none;
+             -ms-user-select: none;
+                 user-select: none;
 }
 
 .cce29d67f__18_18_,.cce29d67f__18_18_.cce29d67f__18_18_1,.cce29d67f__18_18_.cce29d67f__18_18_1.cce29d67f__18_18_2,.cce29d67f__18_18_.cce29d67f__18_18_1.cce29d67f__18_18_2.cce29d67f__18_18_3,.cce29d67f__18_18_.cce29d67f__18_18_1.cce29d67f__18_18_2.cce29d67f__18_18_3.cce29d67f__18_18_4,.cce29d67f__18_18_.cce29d67f__18_18_1.cce29d67f__18_18_2.cce29d67f__18_18_3.cce29d67f__18_18_4.cce29d67f__18_18_5,.cce29d67f__18_18_.cce29d67f__18_18_1.cce29d67f__18_18_2.cce29d67f__18_18_3.cce29d67f__18_18_4.cce29d67f__18_18_5.cce29d67f__18_18_6,.cce29d67f__18_18_.cce29d67f__18_18_1.cce29d67f__18_18_2.cce29d67f__18_18_3.cce29d67f__18_18_4.cce29d67f__18_18_5.cce29d67f__18_18_6.cce29d67f__18_18_7,.cce29d67f__18_18_.cce29d67f__18_18_1.cce29d67f__18_18_2.cce29d67f__18_18_3.cce29d67f__18_18_4.cce29d67f__18_18_5.cce29d67f__18_18_6.cce29d67f__18_18_7.cce29d67f__18_18_8,.cce29d67f__18_18_.cce29d67f__18_18_1.cce29d67f__18_18_2.cce29d67f__18_18_3.cce29d67f__18_18_4.cce29d67f__18_18_5.cce29d67f__18_18_6.cce29d67f__18_18_7.cce29d67f__18_18_8.cce29d67f__18_18_9 {

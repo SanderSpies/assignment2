@@ -21,7 +21,7 @@ var webpackConfig = {
       },
       {
         test: /\.css$/,
-        loader: ExtractTextPlugin.extract('css-loader')
+        loader: ExtractTextPlugin.extract('css-loader!autoprefixer-loader')
       }
     ]
   },

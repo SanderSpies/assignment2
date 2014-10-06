@@ -2,6 +2,7 @@
   "name": "exercise2_1",
   "private": true,
   "devDependencies": {
+    "autoprefixer-loader": "1.0.0",
     "css-loader": "^0.7.0",
     "extract-text-webpack-plugin": "^0.3.1",
     "jest-cli": "^0.1.18",

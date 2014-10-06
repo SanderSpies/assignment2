@@ -71,7 +71,7 @@ var NewsArticle = React.createClass({
         <a styles={styles.fullArticleButtonStyle} href={article.link}>Full article</a>
         <div ref="description" styles={styles.descriptionStyle}>
                     {image}
-                    {helperDiv.innerText}
+                    {helperDiv.textContent || helperDiv.innerText}
 
         </div>
     </div>;
