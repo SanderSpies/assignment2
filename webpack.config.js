@@ -5,6 +5,7 @@ var ReactStylePlugin = require('react-style-webpack-plugin');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 var webpackConfig = {
+  devtool: 'sourcemap',
   entry: './Components/NewsList.js',
   output: {
     filename: "bundle.js",
@@ -16,7 +17,7 @@ var webpackConfig = {
         test: /\.js$/,
         loaders: [
           ReactStylePlugin.loader(),
-          'jsx-loader?harmony'
+          'jsx-loader?harmony&sourceMap'
         ]
       },
       {
