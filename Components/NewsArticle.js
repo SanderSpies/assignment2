@@ -86,3 +86,4 @@ var NewsArticle = React.createClass({
 });
 
 module.exports = NewsArticle;
+

@@ -4,13 +4,13 @@
   "devDependencies": {
     "autoprefixer-loader": "1.0.0",
     "css-loader": "^0.7.0",
-    "extract-text-webpack-plugin": "^0.3.1",
+    "extract-text-webpack-plugin": "git+https://github.com/SanderSpies/extract-text-webpack-plugin.git",
     "jest-cli": "^0.1.18",
     "jsx-loader": "git+https://github.com/petehunt/jsx-loader.git",
     "react": "^0.11.2",
     "react-style": "git+https://github.com/js-next/react-style.git",
     "react-style-webpack-plugin": "git+https://github.com/js-next/react-style-webpack-plugin.git",
-    "webpack": "^1.4.1-beta1"
+    "webpack": "1.4.5"
   },
   "dependencies": {
     "lodash-node": "2.4.1",

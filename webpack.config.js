@@ -1,15 +1,15 @@
 'use strict';
 
-var webpack = require('webpack');
 var ReactStylePlugin = require('react-style-webpack-plugin');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 var webpackConfig = {
   devtool: 'sourcemap',
   entry: './Components/NewsList.js',
+
   output: {
     filename: "bundle.js",
-    path: __dirname + "/build"
+    path: __dirname + "/build",
   },
   module: {
     loaders: [
@@ -22,7 +22,7 @@ var webpackConfig = {
       },
       {
         test: /\.css$/,
-        loader: ExtractTextPlugin.extract('css-loader!autoprefixer-loader')
+        loader: ExtractTextPlugin.extract('css-loader?sourceMap')
       }
     ]
   },
@@ -33,8 +33,10 @@ var webpackConfig = {
 //        "NODE_ENV": JSON.stringify("production")
 //      }
 //    }),
-    new ReactStylePlugin('bundle.css')
+    new ReactStylePlugin('bundle.css', {allChunks: true})
   ]
 };
+
+
 
 module.exports = webpackConfig;
